@@ -1,0 +1,15 @@
+*Parameter
+tStep = 1000.
+dtMin = 1e-4
+dtMax = 50.
+dtStart = dtMax
+cetol = 1e-6
+temperature1 = 50.
+temperature2 = 110.
+** 
+*Material, name=viscoelastic
+*Expansion
+ 5e-05,
+*Include, input=parameter-prony-reduced.inp
+*Include, input=testmodel-mesh.inp
+*Include, input=testmodel-base.inp

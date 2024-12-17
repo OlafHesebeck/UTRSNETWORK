@@ -1,0 +1,6 @@
+*Parameter
+temp = 100
+*Material, name=mat
+*Include, input=parameter-user-reduced.inp
+*Include, input=simpletest.inp
+**

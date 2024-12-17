@@ -1,0 +1,50 @@
+User Subroutine:
+utrsnetwork.f
+
+--------------------------------------------------------------------
+Python script for material card generation:
+createInput.py
+
+--------------------------------------------------------------------
+Material cards for example material:
+
+Include files are employed which contain the material definitions.
+They have a filename in the format "parameter-<variant>.inp", 
+where "<variant>" can take the following values corresponding 
+to the model variants:
+ -	prony-full
+ - 	prony-reduced
+ - 	prf-reduced
+ - 	user-reduced
+
+--------------------------------------------------------------------
+Input files for one element tests:
+
+For each of the four model variants, a one element test is defined
+in an input file with the name "simpletest-<variant>.inp".
+
+Include file used by all variants:
+simpletest.inp
+
+--------------------------------------------------------------------
+Input files for composite plate under thermal load:
+
+The names of the input files of the 12 test cases have the following structure:
+testmodel-<variant>-<temperature>.inp
+where "<variant>" refers to the material definitions and "<temperature>"
+decribes the temperature cycle with the following posible values:
+ -	50-90
+ -	50-100
+ -	50-110
+
+Example:
+testmodel-prony-full-50-90.inp
+Linear viscoelastic with 39 relaxation times, temperature cycle 50-90 °C
+
+Include file used by all variants:
+testmodel-base.inp
+testmodel-mesh.inp
+
+--------------------------------------------------------------------
+Abaqus configuration file to set the variable ABA_MATPT_INTEG_PRF:
+abaqus_v6.env

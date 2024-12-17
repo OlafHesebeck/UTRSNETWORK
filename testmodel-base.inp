@@ -1,0 +1,115 @@
+** 
+** MATERIALS
+** 
+*Material, name=aluminium
+*Elastic
+70000., 0.33
+*Expansion
+ 2.3e-05,
+*Material, name=steel
+*Elastic
+210000., 0.3
+*Expansion
+ 1.2e-05,
+** 
+** BOUNDARY CONDITIONS
+** 
+*Boundary
+Testpiece-1.xyz0, ENCASTRE
+Testpiece-1.x0, XSYMM
+Testpiece-1.y0, YSYMM
+** 
+** PREDEFINED FIELDS
+** 
+*Initial Conditions, type=TEMPERATURE
+Testpiece-1.all, <temperature1>
+** ----------------------------------------------------------------
+** 
+** STEP: heatup
+** 
+*Step, name=heatup, nlgeom=YES, amplitude=RAMP, inc=30000
+*Visco, cetol=<cetol>
+<dtStart>, <tStep>, <dtMin>, <dtMax>
+** 
+** PREDEFINED FIELDS
+** 
+** Name: temperature   Type: Temperature
+*Temperature
+Testpiece-1.all, <temperature2>
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=0
+** 
+** FIELD OUTPUT: F-Output-1
+** 
+*Output, field, var=pre, num=1
+*Element Output, elset=Testpiece-1.all
+TEMP
+** 
+** HISTORY OUTPUT: H-Output-1
+** 
+*Output, history, variable=PRESELECT
+*Element Output, elset=Testpiece-1.eloutput
+S13, CE13, LE13, TEMP
+*End Step
+** ----------------------------------------------------------------
+** 
+** STEP: cooldown
+** 
+*Step, name=cooldown, nlgeom=YES, amplitude=RAMP, inc=30000
+*Visco, cetol=<cetol>
+<dtStart>, <tStep>, <dtMin>, <dtMax>
+** 
+** PREDEFINED FIELDS
+** 
+** Name: temperature   Type: Temperature
+*Temperature
+Testpiece-1.all, <temperature1>
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=0
+** 
+** FIELD OUTPUT: F-Output-1
+** 
+*Output, field, var=pre, num=1
+*Element Output, elset=Testpiece-1.all
+TEMP
+** 
+** HISTORY OUTPUT: H-Output-1
+** 
+*Output, history, variable=PRESELECT
+*Element Output, elset=Testpiece-1.eloutput
+S13, CE13, LE13, TEMP
+*End Step
+** ----------------------------------------------------------------
+** 
+** STEP: relax
+** 
+*Step, name=relax, nlgeom=YES, amplitude=RAMP, inc=30000
+*Visco, cetol=<cetol>
+<dtStart>, <tStep>, <dtMin>, <dtMax>
+** 
+** PREDEFINED FIELDS
+** 
+** Name: temperature   Type: Temperature
+*Temperature
+Testpiece-1.all, <temperature1>
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=0
+** 
+** FIELD OUTPUT: F-Output-1
+** 
+*Output, field, var=pre, num=1
+*Element Output, elset=Testpiece-1.all
+TEMP
+** 
+** HISTORY OUTPUT: H-Output-1
+** 
+*Output, history, variable=PRESELECT
+*Element Output, elset=Testpiece-1.eloutput
+S13, CE13, LE13, TEMP
+*End Step
